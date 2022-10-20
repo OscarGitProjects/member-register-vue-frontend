@@ -1,17 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <main-navigation></main-navigation>
+  <main>
+    <router-view></router-view>
+  </main>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { v4 as uuidv4 } from "uuid";
+
+// components
+import MainNavigation from "./components/navigation/MainNavigation.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    "main-navigation": MainNavigation,
+  },
+  data() {
+    return {
+      id: uuidv4(),
+    };
+  },
+  methods: {},
+};
 </script>
 
 <style>
@@ -22,5 +32,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.error {
+  color: red;
 }
 </style>
