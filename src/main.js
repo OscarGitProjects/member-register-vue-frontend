@@ -31,11 +31,9 @@ const router = createRouter({
   //scrollBehavior(to, from, savedPosition){}
   scrollBehavior(to, from, savedPosition) {
     //console.log(to, from, savedPosition);
-
     if (savedPosition) {
       return savedPosition;
     }
-
     // This means scroll to the top of the page
     return { left: 0, top: 0 };
   },
