@@ -3,20 +3,26 @@
     <form id="newMemberForm" v-on:submit.prevent="submitData">
       <div class="card">
         <div class="card-body">
-          <message-box
-            v-if="typeOfMessage > 0"
-            v-bind:messageText="messageText"
-            v-bind:typeOfMessage="typeOfMessage"
-          ></message-box>
+          <transition>
+            <message-box
+              v-if="typeOfMessage > 0"
+              v-bind:messageText="messageText"
+              v-bind:typeOfMessage="typeOfMessage"
+            ></message-box>
+          </transition>
 
-          <div v-if="IsSaving">
-            <h3>Saving...</h3>
-          </div>
+          <transition>
+            <div v-if="IsSaving">
+              <h3>Saving...</h3>
+            </div>
+          </transition>
 
-          <div v-if="IsInputInvalid">
-            <h3 class="error">Invalid input</h3>
-            <p class="error">Check all inputs</p>
-          </div>
+          <transition>
+            <div v-if="IsInputInvalid">
+              <h3 class="error">Invalid input</h3>
+              <p class="error">Check all inputs</p>
+            </div>
+          </transition>
 
           <h5 class="card-title">Create new member</h5>
           <div class="row">

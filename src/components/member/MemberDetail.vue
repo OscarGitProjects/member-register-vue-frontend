@@ -5,11 +5,13 @@
   <div class="container" style="margin-top: 0.25em" v-else>
     <div class="card">
       <div class="card-body">
-        <message-box
-          v-if="typeOfMessage > 0"
-          v-bind:messageText="messageText"
-          v-bind:typeOfMessage="typeOfMessage"
-        ></message-box>
+        <transition>
+          <message-box
+            v-if="typeOfMessage > 0"
+            v-bind:messageText="messageText"
+            v-bind:typeOfMessage="typeOfMessage"
+          ></message-box>
+        </transition>
 
         <div v-if="member">
           <h5 class="card-title">Details</h5>

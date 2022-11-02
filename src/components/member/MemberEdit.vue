@@ -6,20 +6,26 @@
     <form id="editMemberForm" v-on:submit.prevent="submitData">
       <div class="card">
         <div class="card-body">
-          <message-box
-            v-if="typeOfMessage > 0"
-            v-bind:messageText="messageText"
-            v-bind:typeOfMessage="typeOfMessage"
-          ></message-box>
+          <transition>
+            <message-box
+              v-if="typeOfMessage > 0"
+              v-bind:messageText="messageText"
+              v-bind:typeOfMessage="typeOfMessage"
+            ></message-box>
+          </transition>
 
-          <div v-if="IsUpdating">
-            <h3>Updating...</h3>
-          </div>
+          <transition>
+            <div v-if="IsUpdating">
+              <h3>Updating...</h3>
+            </div>
+          </transition>
 
-          <div v-if="IsInputInvalid">
-            <h3 class="error">Invalid input</h3>
-            <p class="error">Check all inputs</p>
-          </div>
+          <transition>
+            <div v-if="IsInputInvalid">
+              <h3 class="error">Invalid input</h3>
+              <p class="error">Check all inputs</p>
+            </div>
+          </transition>
 
           <div v-if="member">
             <h5 class="card-title">Edit member</h5>
@@ -250,6 +256,7 @@ export default {
       });
     },
     async updateMember(updatedMember) {
+      this.IsLoading = false;
       this.IsUpdating = true;
       this.typeOfMessage = 0;
 

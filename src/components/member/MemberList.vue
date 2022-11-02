@@ -1,13 +1,17 @@
 <template>
-  <message-box
-    v-if="typeOfMessage > 0"
-    v-bind:messageText="messageText"
-    v-bind:typeOfMessage="typeOfMessage"
-  ></message-box>
+  <transition>
+    <message-box
+      v-if="typeOfMessage > 0"
+      v-bind:messageText="messageText"
+      v-bind:typeOfMessage="typeOfMessage"
+    ></message-box>
+  </transition>
 
-  <div v-if="IsLoading">
-    <p>Loading...</p>
-  </div>
+  <transition>
+    <div v-if="IsLoading">
+      <p>Loading...</p>
+    </div>
+  </transition>
 
   <div v-if="IsLoading === false">
     <div v-if="members && members.length > 0">
